@@ -1,0 +1,52 @@
+{
+	"FileVersion": 3,
+	"EngineAssociation": "4.27",
+	"Category": "",
+	"Description": "",
+	"Modules": [
+		{
+			"Name": "CoCreationUE4_27",
+			"Type": "Runtime",
+			"LoadingPhase": "Default",
+			"AdditionalDependencies": [
+				"UXTools",
+				"InteractML"
+			]
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "HoloLensAR",
+			"Enabled": true,
+			"SupportedTargetPlatforms": [
+				"Win64"
+			]
+		},
+		{
+			"Name": "WindowsMixedReality",
+			"Enabled": true,
+			"SupportedTargetPlatforms": [
+				"Win64",
+				"HoloLens"
+			]
+		},
+		{
+			"Name": "UXTools",
+			"Enabled": true,
+			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/product/f9f9cddaf5834ad1abeda49da34adf85",
+			"SupportedTargetPlatforms": [
+				"Win64",
+				"HoloLens",
+				"Android"
+			]
+		},
+		{
+			"Name": "InteractML",
+			"Enabled": true,
+			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/product/1217f5d62b7442f3bbdf2ed07bd71a60"
+		}
+	],
+	"TargetPlatforms": [
+		"HoloLens"
+	]
+}
