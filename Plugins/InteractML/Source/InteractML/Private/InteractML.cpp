@@ -111,7 +111,9 @@ void FInteractMLModule::InitPaths()
 	}
 
 	//here, use this
-	DataRootPath = FPaths::Combine( FPaths::ProjectContentDir(), data_path );
+	// DataRootPath = FPaths::Combine( FPaths::ProjectContentDir(), data_path );
+	// DataRootPath = FPaths::Combine( FPaths::ProjectDir(), data_path );
+	DataRootPath = FPaths::ProjectDir();
 	FPaths::NormalizeDirectoryName( DataRootPath );
 	FPaths::CollapseRelativeDirectories( DataRootPath );
 	UE_LOG( LogInteractML, Log, TEXT( "ML data file path set to: '%s'%s" ), *DataRootPath, is_overridden ? TEXT( "" ) : TEXT( " (default)" ) );
