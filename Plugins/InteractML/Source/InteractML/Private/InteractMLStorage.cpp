@@ -219,28 +219,33 @@ bool UInteractMLStorage::Save() const
 {
 	//gather
 	FString path = GetFilePath();
+	UE_LOG(LogInteractML, Log, TEXT("_______________1"))
 	IPlatformFile& file_system = FPlatformFileManager::Get().GetPlatformFile();
 	
 	//ensure directory
 	FString directory = GetDirectoryPath();
 	if(!file_system.DirectoryExists( *directory ))
 	{
+		UE_LOG(LogInteractML, Log, TEXT("_______________2"))
 		file_system.CreateDirectoryTree( *directory );
 	}
 	if (!file_system.DirectoryExists(*directory))
 	{
+		UE_LOG(LogInteractML, Log, TEXT("_______________3"))
 		return false;
 	}
 
 	//generate Json
 	FString json_string; 
 	SaveJson( json_string );
+	UE_LOG(LogInteractML, Log, TEXT("_______________4"))
 	
 	//write file
 #if UE_VERSION_OLDER_THAN(4,26,0)   //API change in SaveStringToFile
 	if(FFileHelper::SaveStringToFile( json_string, *path ))
 #else
 	FStringView whole_string( json_string );
+	UE_LOG(LogInteractML, Log, TEXT("_______________5"))
 	if(FFileHelper::SaveStringToFile( whole_string, *path ))
 #endif
 	{
