@@ -53,6 +53,10 @@
 				"Win64",
 				"HoloLens"
 			]
+		},
+		{
+			"Name": "UXToolsExamples",
+			"Enabled": true
 		}
 	],
 	"TargetPlatforms": [
