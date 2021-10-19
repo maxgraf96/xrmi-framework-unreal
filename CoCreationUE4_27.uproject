@@ -10,7 +10,8 @@
 			"LoadingPhase": "Default",
 			"AdditionalDependencies": [
 				"UXTools",
-				"InteractML"
+				"InteractML",
+				"Engine"
 			]
 		}
 	],
