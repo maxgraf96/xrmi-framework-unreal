@@ -26,9 +26,18 @@ class COCREATIONUE4_27_API UMyCPPBlueprintFunctionLibrary : public UBlueprintFun
 	}
 	
 	UFUNCTION(BlueprintCallable, Category = "MyCPPLibrary")
-	static FRotator MirrorRotatorAlongZAxis(FRotator rotatorIn)
+	static FRotator MirrorRotatorAlongAxis(FRotator rotatorIn, FRotator axisRotator)
 	{
-		auto mirroredNormalQuat = FQuat(0, 0, 1, 0);
+		// Copy incoming axis rotator in order to change it
+		auto modifiedAxisRotator = FRotator(axisRotator.Pitch, axisRotator.Yaw, axisRotator.Roll);
+		// Don't take into account pitch (up-down head movement)
+		modifiedAxisRotator.Pitch = 0;
+		modifiedAxisRotator.Yaw = 0;
+		modifiedAxisRotator.Roll = 0;
+		// Convert axis rotator to quaternion & normalise
+		auto mirroredNormalQuat = modifiedAxisRotator.Quaternion();
+		mirroredNormalQuat.Normalize();
+		// Return mirrored rotator
 		return (mirroredNormalQuat * rotatorIn.Quaternion() * mirroredNormalQuat).Rotator();
 	}
 };
