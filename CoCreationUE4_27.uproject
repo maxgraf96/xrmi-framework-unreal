@@ -71,6 +71,10 @@
 		{
 			"Name": "OSC",
 			"Enabled": true
+		},
+		{
+			"Name": "OSCPack",
+			"Enabled": false
 		}
 	],
 	"TargetPlatforms": [
