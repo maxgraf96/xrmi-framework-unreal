@@ -2,6 +2,7 @@
 
 #pragma once
 
+#include <cmath>
 #include <memory>
 
 #include "CoreMinimal.h"
@@ -24,4 +25,10 @@ class COCREATIONUE4_27_API UMyCPPBlueprintFunctionLibrary : public UBlueprintFun
 	{
 		return rotator.Quaternion();
 	}
+	
+	UFUNCTION(BlueprintCallable, Category = "MyCPPLibrary")
+	static float GetFractionFromFloat(float InValue, float OutIntPart)
+    {
+        return modf(InValue, &OutIntPart);
+    }
 };
