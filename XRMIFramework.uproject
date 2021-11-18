@@ -316,6 +316,10 @@
 		{
 			"Name": "XCodeSourceCodeAccess",
 			"Enabled": false
+		},
+		{
+			"Name": "EditableMesh",
+			"Enabled": false
 		}
 	],
 	"TargetPlatforms": [
