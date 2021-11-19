@@ -4,13 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/GameModeBase.h"
-#include "CoCreationUE4_27GameModeBase.generated.h"
+#include "XRMIFrameworkGameModeBase.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class COCREATIONUE4_27_API ACoCreationUE4_27GameModeBase : public AGameModeBase
+class XRMIFRAMEWORK_API AXRMIFrameworkGameModeBase : public AGameModeBase
 {
 	GENERATED_BODY()
 	

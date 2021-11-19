@@ -4,9 +4,9 @@ using UnrealBuildTool;
 using System;
 using System.IO;
 
-public class CoCreationUE4_27 : ModuleRules
+public class XRMIFramework : ModuleRules
 {
-	public CoCreationUE4_27(ReadOnlyTargetRules Target) : base(Target)
+	public XRMIFramework(ReadOnlyTargetRules Target) : base(Target)
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 	

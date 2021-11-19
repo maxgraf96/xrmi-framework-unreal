@@ -10,7 +10,7 @@
 /**
  * 
  */
-class COCREATIONUE4_27_API Utility
+class XRMIFRAMEWORK_API Utility
 {
 public:
 	Utility();
@@ -19,9 +19,7 @@ public:
 	{
 		const std::vector<std::string> noteNames = {"C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"};
 		const int32 octave = (midiNote / 12) - 1;
-		FString test = FString(noteNames[midiNote % 12].c_str()) + FString::FromInt(octave);
-		return test;
-		return FString("Wee");
+		return FString(noteNames[midiNote % 12].c_str()) + FString::FromInt(octave);
 	}
 	
 	~Utility();

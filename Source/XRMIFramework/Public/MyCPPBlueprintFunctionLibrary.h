@@ -8,7 +8,10 @@
 #include "CoreMinimal.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
 
+#include "Utility.h"
+
 #include "MyCPPBlueprintFunctionLibrary.generated.h"
+
 
 using namespace std;
 
@@ -30,7 +33,7 @@ enum class EChord : uint8 {
  * 
  */
 UCLASS()
-class COCREATIONUE4_27_API UMyCPPBlueprintFunctionLibrary : public UBlueprintFunctionLibrary
+class XRMIFRAMEWORK_API UMyCPPBlueprintFunctionLibrary : public UBlueprintFunctionLibrary
 {
 	
 	GENERATED_BODY()
@@ -90,6 +93,9 @@ class COCREATIONUE4_27_API UMyCPPBlueprintFunctionLibrary : public UBlueprintFun
 			return singleNoteMap;
 		}
 	}
+
+	UFUNCTION(BlueprintCallable, Category = "MyCPPLibrary")
+	static FString GetNoteNameFromNumber(int number);
 
 };
 

@@ -10,7 +10,7 @@
  * 
  */
 UCLASS()
-class COCREATIONUE4_27_API AIcosphereSingleNoteC : public AActor
+class XRMIFRAMEWORK_API AIcosphereSingleNoteC : public AActor
 {
 	GENERATED_BODY()
 public:

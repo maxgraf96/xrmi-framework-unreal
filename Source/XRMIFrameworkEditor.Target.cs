@@ -3,12 +3,12 @@
 using UnrealBuildTool;
 using System.Collections.Generic;
 
-public class CoCreationUE4_27EditorTarget : TargetRules
+public class XRMIFrameworkEditorTarget : TargetRules
 {
-	public CoCreationUE4_27EditorTarget( TargetInfo Target) : base(Target)
+	public XRMIFrameworkEditorTarget( TargetInfo Target) : base(Target)
 	{
 		Type = TargetType.Editor;
 		DefaultBuildSettings = BuildSettingsVersion.V2;
-		ExtraModuleNames.AddRange( new string[] { "CoCreationUE4_27" } );
+		ExtraModuleNames.AddRange( new string[] { "XRMIFramework" } );
 	}
 }

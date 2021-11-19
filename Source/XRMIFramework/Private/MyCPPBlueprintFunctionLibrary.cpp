@@ -16,3 +16,7 @@ TArray<int> UMyCPPBlueprintFunctionLibrary::hd7Map = {0, 3, 6, 10};
 TArray<int> UMyCPPBlueprintFunctionLibrary::sus2Map = {0, 2, 7};
 TArray<int> UMyCPPBlueprintFunctionLibrary::sus4Map = {0, 5, 7};
 
+FString UMyCPPBlueprintFunctionLibrary::GetNoteNameFromNumber(int number)
+{
+	return Utility::getNoteFromMidiNumber(number);
+}

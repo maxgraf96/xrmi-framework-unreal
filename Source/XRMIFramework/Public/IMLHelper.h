@@ -10,7 +10,7 @@
 #include "IMLHelper.generated.h"
 
 UCLASS()
-class COCREATIONUE4_27_API AIMLHelper : public AActor
+class XRMIFRAMEWORK_API AIMLHelper : public AActor
 {
 	GENERATED_BODY()
 	
