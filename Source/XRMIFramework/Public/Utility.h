@@ -17,6 +17,10 @@ public:
 	
 	static FString getNoteFromMidiNumber(int midiNote)
 	{
+		if(midiNote < 0)
+		{
+			return FString(" MIDINote < 0");
+		}
 		const std::vector<std::string> noteNames = {"C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"};
 		const int32 octave = (midiNote / 12) - 1;
 		return FString(noteNames[midiNote % 12].c_str()) + FString::FromInt(octave);
