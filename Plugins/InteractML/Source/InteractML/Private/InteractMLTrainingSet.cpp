@@ -44,6 +44,13 @@ bool UInteractMLTrainingSet::LoadJson(const FString& json_string)
 		//post-load analysis/fixups
 		ValidateExamples();
 		RefreshDerivedState();
+
+		// Load label cache from disk
+		FString LabelCachePath = GetFilePath().Append("_labelcache.json");
+		FString LabelCacheJsonString;
+		FFileHelper::LoadFileToString(LabelCacheJsonString,*LabelCachePath);
+		
+		FJsonObjectConverter::JsonObjectStringToUStruct(LabelCacheJsonString, &LabelCache);
 		
 		UE_LOG(LogInteractML, Log, TEXT("Successfully loaded TrainingSet data from JSON."));
 		
@@ -58,6 +65,18 @@ bool UInteractMLTrainingSet::LoadJson(const FString& json_string)
 //
 bool UInteractMLTrainingSet::SaveJson(FString& json_string) const
 {
+	// Create JSON for Label Cache
+	FString LabelCacheJsonString = "";
+	FJsonObjectConverter::UStructToJsonObjectString(LabelCache, LabelCacheJsonString);
+	
+	FString LabelCachePath = GetFilePath().Append("_labelcache.json");
+	FStringView whole_string(LabelCacheJsonString);
+	if(FFileHelper::SaveStringToFile( whole_string, *LabelCachePath, FFileHelper::EEncodingOptions::ForceUTF8 ))
+	{
+		UE_LOG(LogInteractML, Log, TEXT("Label cache saved successfully."))
+	}
+
+	
 	return SaveExamplesToJson(Examples, json_string);
 }
 

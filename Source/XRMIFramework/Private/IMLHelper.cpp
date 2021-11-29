@@ -3,6 +3,8 @@
 
 #include "IMLHelper.h"
 
+#include "InteractML.h"
+
 // Sets default values
 AIMLHelper::AIMLHelper()
 {
@@ -34,6 +36,8 @@ void AIMLHelper::InitialiseDataset(UInteractMLTrainingSet* TrainingSet)
 	TArray<FInteractMLLabelCapture> Labels = cache.Labels;
 
 	TArray<FInteractMLStringMapping> StringsMap = cache.StringsMap;
+
+	UE_LOG(LogActor, Warning, TEXT("%i"), TrainingSet->GetLabelCount())
 
 	int a = 2;
 }
