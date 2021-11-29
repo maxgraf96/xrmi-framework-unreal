@@ -54,8 +54,19 @@ bool UInteractMLModel::LoadJson( const FString& json_string )
 		//apply
 		ok = model->putJSON( std_json );
 
+		FString json_fstring(std_json.c_str());
+		// UE_LOG(LogInteractML, Log, TEXT("Model JSON String: %s"), *json_fstring);
+
 		//TODO: shouldn't assume that a loaded model is trained, currently can't tell
 		bIsTrained = true;
+
+		if(ok)
+		{
+			UE_LOG(LogInteractML, Log, TEXT("Successfully loaded model data from JSON."));
+		} else
+		{
+			UE_LOG(LogInteractML, Log, TEXT("Error applying JSON model data to rapidlib model."));
+		}
 	}
 	return ok;
 }

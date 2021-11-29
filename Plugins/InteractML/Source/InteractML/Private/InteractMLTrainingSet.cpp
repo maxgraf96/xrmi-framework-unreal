@@ -32,11 +32,20 @@ FString UInteractMLTrainingSet::cExtensionPrefix(TEXT(".training"));
 //
 bool UInteractMLTrainingSet::LoadJson(const FString& json_string)
 {
-	if (LoadExamplesFromJson(json_string, Examples))
+	auto ansi_json = StringCast<ANSICHAR>( *json_string );
+	std::string std_json = ansi_json.Get();
+
+	FString json_fstring(std_json.c_str());
+		
+	// UE_LOG(LogInteractML, Log, TEXT("Training Set JSON String: %s"), *json_fstring);
+	
+	if (LoadExamplesFromJson(json_fstring, Examples))
 	{
 		//post-load analysis/fixups
 		ValidateExamples();
 		RefreshDerivedState();
+		
+		UE_LOG(LogInteractML, Log, TEXT("Successfully loaded TrainingSet data from JSON."));
 		
 		return true;		
 	}

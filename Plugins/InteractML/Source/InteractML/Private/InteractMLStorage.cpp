@@ -199,6 +199,7 @@ bool UInteractMLStorage::Load()
 	{
 		//no file, empty json
 		FString none;
+		UE_LOG(LogInteractML, Warning, TEXT("No JSON file found for --- %s ---!!"), *GetName())
 		return LoadJson( none );
 	}
 
@@ -206,6 +207,7 @@ bool UInteractMLStorage::Load()
 	FString json_string;
 	if(FFileHelper::LoadFileToString( json_string, *path ))
 	{
+		UE_LOG(LogInteractML, Warning, TEXT("Loading JSON file from --- %s --- for --- %s ---!!"), *path ,*GetName())
 		return LoadJson( json_string );
 	}		
 
@@ -219,38 +221,34 @@ bool UInteractMLStorage::Save() const
 {
 	//gather
 	FString path = GetFilePath();
-	UE_LOG(LogInteractML, Log, TEXT("_______________1"))
 	IPlatformFile& file_system = FPlatformFileManager::Get().GetPlatformFile();
 	
 	//ensure directory
 	FString directory = GetDirectoryPath();
 	if(!file_system.DirectoryExists( *directory ))
 	{
-		UE_LOG(LogInteractML, Log, TEXT("_______________2"))
 		file_system.CreateDirectoryTree( *directory );
 	}
 	if (!file_system.DirectoryExists(*directory))
 	{
-		UE_LOG(LogInteractML, Log, TEXT("_______________3"))
 		return false;
 	}
 
 	//generate Json
 	FString json_string; 
 	SaveJson( json_string );
-	UE_LOG(LogInteractML, Log, TEXT("_______________4"))
 	
 	//write file
 #if UE_VERSION_OLDER_THAN(4,26,0)   //API change in SaveStringToFile
 	if(FFileHelper::SaveStringToFile( json_string, *path ))
 #else
 	FStringView whole_string( json_string );
-	UE_LOG(LogInteractML, Log, TEXT("_______________5"))
-	if(FFileHelper::SaveStringToFile( whole_string, *path ))
+	if(FFileHelper::SaveStringToFile( whole_string, *path, FFileHelper::EEncodingOptions::ForceUTF8 ))
 #endif
 	{
 		//nolonger needs save
 		bNeedsSave = false;
+		UE_LOG(LogInteractML, Log, TEXT("_______________6: JSON data saved successfully"))
 		return true;
 	}
 	
