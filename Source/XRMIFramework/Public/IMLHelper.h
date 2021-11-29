@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "InteractMLTrainingSet.h"
 #include "GameFramework/Actor.h"
 
 #include "InteractML/Public/InteractMLParameters.h"
@@ -76,5 +77,8 @@ public:
 		
 		return params;
 	}
+
+	UFUNCTION(BlueprintCallable, Category = "IMLHelper")
+	void InitialiseDataset(UInteractMLTrainingSet* TrainingSet);
 
 };

@@ -25,3 +25,16 @@ void AIMLHelper::Tick(float DeltaTime)
 
 }
 
+void AIMLHelper::InitialiseDataset(UInteractMLTrainingSet* TrainingSet)
+{
+	auto cache = TrainingSet->GetLabelCache();
+
+	const class UInteractMLLabel* LabelType = cache.LabelType;
+
+	TArray<FInteractMLLabelCapture> Labels = cache.Labels;
+
+	TArray<FInteractMLStringMapping> StringsMap = cache.StringsMap;
+
+	int a = 2;
+}
+

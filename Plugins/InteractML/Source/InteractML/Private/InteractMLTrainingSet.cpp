@@ -162,6 +162,12 @@ void UInteractMLTrainingSet::ExtractCharacteristics()
 		ParameterCount = min_param_count;
 	}
 
+	// LabelCache.Reset();
+	// for(FInteractMLExample example : Examples)
+	// {
+	// 	LabelCache.FindOrAdd(nullptr, &example.label);
+	// }
+
 	//report
 	if (invalid)
 	{
